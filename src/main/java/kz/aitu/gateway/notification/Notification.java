@@ -3,7 +3,6 @@ package kz.aitu.gateway.notification;
 import java.util.Objects;
 import kz.aitu.gateway.sender.MessageSender;
 
-/** Abstraction. The sender reference is the Bridge to the implementation hierarchy. */
 public abstract class Notification {
     protected MessageSender sender;
 

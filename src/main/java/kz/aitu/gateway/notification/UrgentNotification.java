@@ -33,7 +33,7 @@ public final class UrgentNotification extends Notification {
     }
 
     private boolean trySend(MessageSender candidate, String recipient, String body) {
-        if (!candidate.isAvailable()) {
+        if(!candidate.isAvailable()){
             System.out.println(candidate.getChannelName() + " unavailable");
             return false;
         }

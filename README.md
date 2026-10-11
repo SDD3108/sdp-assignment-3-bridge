@@ -1,4 +1,4 @@
-# Multi-Channel Notification Gateway
+# Software Design Patterns
 
 Assignment 3 for Software Design Patterns: a Java 17 console application that uses the **Bridge pattern** to separate notification behavior from delivery channels. All providers are simulated. No accounts, API keys, external messaging services, or paid infrastructure are needed.
 

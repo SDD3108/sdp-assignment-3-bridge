@@ -4,9 +4,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import kz.aitu.gateway.sender.MessageSender;
 
-/** Base64 is an educational transformation, not secure encryption. */
 public final class EncryptedNotification extends Notification {
-    public EncryptedNotification(MessageSender sender) { super(sender); }
+    public EncryptedNotification(MessageSender sender){
+        super(sender);
+    }
 
     @Override
     public void send(String recipient, String message) {

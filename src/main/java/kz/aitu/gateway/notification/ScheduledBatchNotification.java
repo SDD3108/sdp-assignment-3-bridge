@@ -7,13 +7,11 @@ import java.util.List;
 import java.util.Objects;
 import kz.aitu.gateway.sender.MessageSender;
 
-/** A prepared batch executed by an explicit sendBatch call (no timer/thread required). */
 public final class ScheduledBatchNotification extends Notification {
     private final List<String> recipients;
 
     public ScheduledBatchNotification(MessageSender sender, Collection<String> recipients) {
         super(sender);
-        // Copy the collection; invalid entries count as failures when the batch is sent.
         this.recipients = Collections.unmodifiableList(new ArrayList<>(Objects.requireNonNull(recipients)));
     }
 

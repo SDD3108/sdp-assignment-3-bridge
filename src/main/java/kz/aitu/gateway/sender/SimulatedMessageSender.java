@@ -3,7 +3,6 @@ package kz.aitu.gateway.sender;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Shared simulator mechanics; channel-specific formatting stays in concrete senders. */
 public abstract class SimulatedMessageSender implements MessageSender {
     private boolean available;
     private final List<DeliveredMessage> deliveries = new ArrayList<>();

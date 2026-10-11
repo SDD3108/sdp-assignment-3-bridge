@@ -100,7 +100,7 @@ class GatewayTest {
     @Test void urgentPrefixCountsTowardsSmsLimit() {
         var sender = new SmsMessageSender();
         new UrgentNotification(sender).send("student", "a".repeat(152));
-        assertTrue(sender.getDeliveries().isEmpty()); // 9-character prefix + 152 = 161.
+        assertTrue(sender.getDeliveries().isEmpty());
     }
 
     @Test void encryptedNotificationEncodesUtf8BeforeDelivery() {
