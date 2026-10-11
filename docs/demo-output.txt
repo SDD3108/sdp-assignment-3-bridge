@@ -1,0 +1,45 @@
+
+=== 1. UrgentNotification + Telegram ===
+[Telegram] SENT to student-01: parse_mode=Markdown; **Urgent notification**
+[URGENT] Submit the assignment today.
+Result: successful
+
+=== 2. EncryptedNotification + Email ===
+[Email] SENT to student-01: Subject: Encoded notification (Base64)
+WW91ciB2ZXJpZmljYXRpb24gY29kZSBpcyAxMjM0Lg==
+--
+Notification Gateway
+Result: successful
+
+=== 3. ScheduledBatchNotification + SMS ===
+[SMS] SENT to student-01: Design Patterns defense starts at 10:00.
+[SMS] SENT to student-02: Design Patterns defense starts at 10:00.
+[SMS] FAILED: unavailable or invalid message
+Total: 3
+Successful: 2
+Failed: 1
+
+=== 4. Runtime switching: Telegram -> Email (same object) ===
+[Telegram] SENT to student-01: parse_mode=Markdown; **Urgent notification**
+[URGENT] Before switching.
+Result: successful
+[Email] SENT to student-01: Subject: Urgent notification
+[URGENT] After switching.
+--
+Notification Gateway
+Result: successful
+
+=== 5. Telegram unavailable -> fallback to SMS ===
+Telegram unavailable
+Trying fallback: SMS
+[SMS] SENT to student-01: [URGENT] Fallback keeps the notification deliverable.
+Result: successful
+
+=== 6. MarketingNotification + PushNotificationSender ===
+[Push] SENT to device-01: device=device-01; push-alert=[Special offer] [PROMO] Get 20% off the Java workshop.
+Reply STOP to unsubscribe.
+Result: successful
+
+=== Extra: Kafka event publishing ===
+[Kafka] SENT to student-01: topic=notifications; key=student-01; event={title='Encoded notification (Base64)', body='RXZlbnQgZGVsaXZlcmVkLg=='}
+Result: successful

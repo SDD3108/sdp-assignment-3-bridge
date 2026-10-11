@@ -1,0 +1,20 @@
+name: Java build and tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: ['17', '21']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+      - name: Build and run JUnit 5 tests
+        run: mvn -B -ntp verify
+      - name: Run all demo scenarios
+        run: java -jar target/notification-gateway-1.0.0.jar
