@@ -33,6 +33,10 @@ public final class Demo {
         urgent.setSender(telegram);
         urgent.send("student-01", "Fallback keeps the notification deliverable.");
 
+        section("6. MarketingNotification + PushNotificationSender");
+        new MarketingNotification(new PushNotificationSender())
+                .send("device-01", "Get 20% off the Java workshop.");
+
         section("Extra: Kafka event publishing");
         new EncryptedNotification(new KafkaEventSender()).send("student-01", "Event delivered.");
     }
